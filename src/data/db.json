@@ -1,14 +1,15 @@
 {
         "images":[
-                {"id":1, "url":"/images/img_1.jpg"},
-                {"id":2, "url":"/images/img_2.jpeg"},
-                {"id":3, "url":"/images/img_3.jpg"},
-                {"id":4, "url":"/images/img_4.jpg"},
-                {"id":5, "url":"/images/img_5.jpg"},
-                {"id":6, "url":"/images/img_6.jpeg"},
-                {"id":7, "url":"/images/img_7.jpeg"}
+                {"id":"1", "url":"/images/img_1.jpg"},
+                {"id":"2", "url":"/images/img_2.jpeg"},
+                {"id":"3", "url":"/images/img_3.jpg"},
+                {"id":"4", "url":"/images/img_4.jpg"},
+                {"id":"5", "url":"/images/img_5.jpg"},
+                {"id":"6", "url":"/images/img_6.jpeg"},
+                {"id":"7", "url":"/images/img_7.jpeg"}
         ],
         "users":[
-                {"id":1, "username":"","password":""}
+                {"id":"1", "username":"Donia","password":"donia@123", "images_list_ids":["1","2","3","4"]},
+                {"id":"2", "username":"Admin","password":"admin@123", "images_list_ids":["5","6","7"]}
         ]
 }

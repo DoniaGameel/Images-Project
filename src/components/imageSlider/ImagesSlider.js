@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Carousel, Image } from "antd";
 import "./ImagesSlider.css";
+import CarouselComponent from "../general/CarouselComponent";
 
 function SlideImages() {
   let [images, setImages] = useState([]);
@@ -10,28 +10,7 @@ function SlideImages() {
       .then((data) => setImages(data));
   }, []);
 
-  return (
-    <>
-      <Carousel className="carousel" arrows infinite>
-        {images.map((image) => {
-          console.log(image["url"]);
-          console.log("=============");
-          return (
-            <div
-              key={image["id"]}
-              style={{ display: "flex", justifyContent: "center" }}
-            >
-              <Image
-                className="content"
-                src={image["url"]}
-                alt={image["url"]}
-              />
-            </div>
-          );
-        })}
-      </Carousel>
-    </>
-  );
+  return <CarouselComponent images={images}></CarouselComponent>;
 }
 
 export default SlideImages;

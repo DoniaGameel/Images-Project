@@ -8,6 +8,7 @@ import {
 import Home from "./components/Home";
 import Login from "./components/login/Login";
 import "./App.css";
+import UploadImages from "./components/uploadImages/UploadImages";
 
 const AppWrapper = ({ children }) => {
   const location = useLocation();
@@ -24,6 +25,7 @@ const App = () => (
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/uploadImages" element={<UploadImages />} />
       </Routes>
     </AppWrapper>
   </Router>
