@@ -1,0 +1,14 @@
+.ant-form-item-required{
+        font-size: large !important;
+        color: white !important;
+
+}
+
+.submit-button
+{
+        background-color: #001529 !important;
+}
+
+.submit-button:hover{
+        background-color:  #02070c !important;
+}

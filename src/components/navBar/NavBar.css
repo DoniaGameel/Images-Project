@@ -1,0 +1,13 @@
+.nav-link{
+        color: white !important;
+        float: right !important;
+}
+
+.nav-link:hover{
+        color: blue !important;
+        /* background-color: white !important; */
+}
+
+.ant-layout-header{
+        justify-content: end !important;
+}

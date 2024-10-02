@@ -1,0 +1,17 @@
+.slick-arrow, .slick-arrow:hover {
+  color: black !important; 
+}
+
+.carousel .slick-slide {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 100%;
+  margin-top: 100px;
+}
+
+.content {
+  width: 70vw !important; /* Full viewport width */
+  height: 70vh !important; /* Full viewport height */
+  object-fit: cover; /* Ensure the image covers the area without distorting */
+}
