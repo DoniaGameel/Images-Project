@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Login from "./components/login/Login";
 import "./App.css";
 import UploadImages from "./components/uploadImages/UploadImages";
+import UploadedImages from "./components/UploadedImages";
 
 const AppWrapper = ({ children }) => {
   const location = useLocation();
@@ -29,5 +30,6 @@ const App = () => (
       </Routes>
     </AppWrapper>
   </Router>
+  // <UploadedImages></UploadedImages>
 );
 export default App;
