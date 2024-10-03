@@ -94,7 +94,8 @@ function UploadImages() {
       ></NavBar>
       <Upload
         accept="image/*"
-        showUploadList={true} // Hide the default upload list
+        showUploadList={false} // Hide the default upload list
+        //defaultFileList
         maxCount={1}
         beforeUpload={(file) => {
           handleFileChange(file); // Handle file change
