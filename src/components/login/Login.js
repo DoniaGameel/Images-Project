@@ -1,16 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Spin } from "antd";
 import { showErrorToast } from "../general/ToastHelper";
 import "./Login.css";
 
 function Login() {
   const navigate = useNavigate();
   let [users, setUsers] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+
   useEffect(() => {
-    fetch("http://localhost:4000/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const usersResponse = await fetch("http://localhost:4000/users");
+        const users = await usersResponse.json();
+        setUsers(users); // Set the state with the users data
+        setLoading(false);
+      } catch (error) {
+        //setLoading(false);
+        console.error("Error fetching data:", error);
+        showErrorToast("Error Loading Users Data");
+      }
+    };
+    fetchData();
   }, []);
 
   const handleSubmit = (values) => {
@@ -32,7 +45,9 @@ function Login() {
       showErrorToast("Invalid user name or password");
     }
   };
-  return (
+  return isLoading ? (
+    <Spin></Spin>
+  ) : (
     <Form
       name="basic"
       labelCol={{

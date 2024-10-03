@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { Upload, Button, message } from "antd";
+import { Upload, Button, Spin } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import CarouselComponent from "../general/CarouselComponent";
-import { showErrorToast } from "../general/ToastHelper";
-
+import { showErrorToast, showSuccessToast } from "../general/ToastHelper";
+import "./UploadImages.css";
+import NavBar from "../navBar/NavBar";
 function UploadImages() {
   const location = useLocation();
   const { data } = location.state || {}; // Retrieve the data passed via state
   const [userImages, setUserImages] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [isLoading, setLoading] = useState(false);
 
   const handleFileChange = (file) => {
     setSelectedFile(file);
@@ -28,7 +30,7 @@ function UploadImages() {
       const imageData = {
         id: new Date().getTime().toString(), // Generate a unique ID
         url: base64String,
-        userID: data["userId"].toString(),
+        userId: data["userId"].toString(),
       };
 
       try {
@@ -45,11 +47,13 @@ function UploadImages() {
         }
 
         const data = await response.json();
-        message.success("Upload successful!"); // Notify on success
+        showSuccessToast("Upload successful!"); // Notify on success
         console.log("Success", data);
+        // Update userImages by creating a new array and appending the new image
+        setUserImages((prevImages) => [...prevImages, imageData]);
       } catch (err) {
         console.log("Error", err);
-        message.error("Upload failed!");
+        showErrorToast("Upload failed!");
       }
     };
 
@@ -59,6 +63,7 @@ function UploadImages() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const imagesResponse = await fetch("http://localhost:4000/images");
         const images = await imagesResponse.json();
         // Filter images based on the associated IDs
@@ -67,29 +72,46 @@ function UploadImages() {
         );
 
         setUserImages(associatedImages); // Set the state with the user's images
+        setLoading(false);
       } catch (error) {
+        //setLoading(false);
         console.error("Error fetching data:", error);
+        showErrorToast("Error Loading Images");
       }
     };
     fetchData();
   }, [data]);
 
-  return (
+  return isLoading ? (
+    <Spin></Spin>
+  ) : (
     <>
+      <NavBar
+        admin={true}
+        home={false}
+        userId={data["userId"].toString()}
+      ></NavBar>
       <Upload
         accept="image/*"
-        showUploadList={false} // Hide the default upload list
+        showUploadList={true} // Hide the default upload list
         beforeUpload={(file) => {
           handleFileChange(file); // Handle file change
           return false; // Prevent automatic upload
         }}
       >
-        <Button icon={<UploadOutlined />}>Select File</Button>
+        <Button icon={<UploadOutlined />} style={{ marginTop: 30 }}>
+          Select File
+        </Button>
       </Upload>
-      <Button type="primary" onClick={handleUpload} style={{ marginTop: 16 }}>
+      <Button
+        type="primary"
+        onClick={handleUpload}
+        style={{ marginTop: 16, marginLeft: 16 }}
+      >
         Upload
       </Button>
-      <CarouselComponent images={userImages}></CarouselComponent>
+      <p>Please upload high resolution large images (Laptop Backgrounds)</p>
+      <CarouselComponent images={userImages} admin={true}></CarouselComponent>
     </>
   );
 }

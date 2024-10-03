@@ -1,0 +1,19 @@
+.ant-spin{
+        margin-top: 50vh;
+}
+
+.home-wrapper{
+        height: 100vh;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+}
+
+p{
+        color: #1677ff;
+}
+
+.btn-row{
+        align-items: end;
+        justify-content: end;
+}
