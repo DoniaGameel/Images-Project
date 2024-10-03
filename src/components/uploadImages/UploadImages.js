@@ -58,6 +58,7 @@ function UploadImages() {
     };
 
     reader.readAsDataURL(selectedFile); // Read the file as a data URL
+    setSelectedFile(null);
   };
 
   useEffect(() => {
@@ -94,6 +95,7 @@ function UploadImages() {
       <Upload
         accept="image/*"
         showUploadList={true} // Hide the default upload list
+        maxCount={1}
         beforeUpload={(file) => {
           handleFileChange(file); // Handle file change
           return false; // Prevent automatic upload
