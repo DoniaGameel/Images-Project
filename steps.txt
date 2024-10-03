@@ -1,3 +1,0 @@
-json-server --version
-
-json-server --watch src/data/db.json
