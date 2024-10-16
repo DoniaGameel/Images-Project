@@ -3,4 +3,4 @@
 ## From Inside the project root directory:
 1- npm install -g json-server
 
-2- json-server --watch src/data/db.json
+2- json-server --watch src/data/db.json --port 4000
