@@ -1,17 +1,67 @@
-.slick-arrow, .slick-arrow:hover {
-  color: black !important; 
+.ant-carousel .slick-next::after, .ant-carousel .slick-next:hover::after {
+  color: #545F5E !important; 
+  margin-left: 5px;
+  margin-top: 5px;
 }
 
-.carousel .slick-slide {
+.ant-carousel .slick-prev::after, .ant-carousel .slick-prev:hover::after{
+  color: #545F5E !important; 
+  margin-left: 9px;
+  margin-top: 6px;
+}
+
+.slick-arrow {
+  color: black !important; 
+  background-color: #d1cece !important;
+  border-radius: 50%;
+  height: 30px !important;
+  width: 30px !important;
   display: flex !important;
+  justify-content: center !important; /* Center arrow horizontally */
+  align-items: center !important; /* Center arrow vertically */
+  z-index: 1 !important;
+}
+
+.slick-slider {
   justify-content: center !important;
   align-items: center !important;
-  height: 100%;
-  margin-top: 100px;
+  height: auto !important;
+  width: 100% !important;
+}
+
+.slick-list {
+  height: auto;
+  overflow: hidden !important; /* Prevent any overflow */
+}
+
+.slick-slide {
+  margin: 0 !important; /* Ensure no margin between slides */
+  padding: 0 !important; /* Ensure no padding between slides */
+}
+
+
+.slick-track {
+  display: flex !important; 
+  width: 100% !important; /* Ensure track fills the full width */
 }
 
 .content {
-  width: 70vw !important; /* Full viewport width */
-  height: 70vh !important; /* Full viewport height */
-  object-fit: cover; /* Ensure the image covers the area without distorting */
+  width: 100vw !important;
+  height: auto !important;
+  object-fit: cover !important; /* Maintain aspect ratio and fill container */
+}
+
+.carousel {
+  height: 100vh;
+  overflow: hidden !important; /* Prevent overflow of next images */
+}
+
+.carousel .slick-slide .ant-row {
+  width: 100vw;
+}
+
+.carousel .slick-slide img {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 110%;
 }

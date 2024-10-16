@@ -2,6 +2,7 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import NavBar from "./navBar/NavBar";
 import SlideImages from "./imageSlider/ImagesSlider";
+import "./Home.css";
 
 const Home = () => {
   const location = useLocation();
@@ -13,7 +14,7 @@ const Home = () => {
   return (
     <>
       <NavBar admin={adminView} home={true} userId={userId}></NavBar>
-      <SlideImages></SlideImages>
+      <SlideImages class="content-slider"></SlideImages>
     </>
   );
 };

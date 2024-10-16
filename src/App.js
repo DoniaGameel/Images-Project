@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router, // Change this line
   Route,
   Routes,
   useLocation,
@@ -29,6 +29,6 @@ const App = () => (
       </Routes>
     </AppWrapper>
   </Router>
-  // <UploadedImages></UploadedImages>
 );
+
 export default App;
