@@ -1,0 +1,25 @@
+name: JSON Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  serve:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install json-server
+      run: npm install -g json-server
+
+    - name: Start json-server
+      run: json-server --watch src/data/db.json --host 0.0.0.0 --port 4000 &
